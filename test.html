@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>갤러리 페이지</title>
+  <link rel="stylesheet" href="css/test.css" />
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <nav class="menu">
+        <a href="menu1.html">사진모음</a>
+        <a href="menu2.html">코딩</a>
+        <a href="menu3.html">공부</a>
+        <a href="menu4.html">나중에</a>
+      </nav>
+      <form class="search-box" action="search.html" method="GET">
+        <input type="text" name="query" placeholder="검색 (태그/제목)" required />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <!-- ───────────────────────────────────────────────────────────────────────────
+         1) 사진 갤러리 그리드
+         - 기존 <img> 요소를 <a href="#imgX">…</a>로 감싸고,
+         - 마지막에 "사진 추가"용 + 버튼을 추가함.
+       ─────────────────────────────────────────────────────────────────────────── -->
+    <section class="photo-gallery">
+      <a href="#img1" class="thumb">
+        <img src="css/cat.jpg" alt="사진1" />
+      </a>
+      <a href="#img2" class="thumb">
+        <img src="css/cat2.jpg" alt="사진2" />
+      </a>
+      <a href="#img3" class="thumb">
+        <img src="css/cat3.jpg" alt="사진3" />
+      </a>
+      <a href="#img4" class="thumb">
+        <img src="css/help.jpg" alt="사진4" />
+      </a>
+      <a href="#img5" class="thumb">
+        <img src="css/coding.jpg" alt="사진5" />
+      </a>
+      <a href="#img6" class="thumb">
+        <img src="css/book.jpg" alt="사진6" />
+      </a>
+      <a href="#img7" class="thumb">
+        <img src="css/t1worlds2024.jpg" alt="사진7" />
+      </a>
+      <a href="#img8" class="thumb">
+        <img src="css/sun.jpg" alt="사진8" />
+      </a>
+
+      <!-- ─────────────────────────────────────────────────────────────────────
+           2) 사진 추가용 + 버튼 (JavaScript로 클릭 시 업로드 모달 등 연결 예정)
+         ───────────────────────────────────────────────────────────────────── -->
+      <div class="thumb add-photo">
+        <button type="button" class="add-photo-button">＋</button>
+      </div>
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────────────────────────
+         3) 라이트박스(모달) 영역
+         - 각 ID(img1~img8)는 위 href와 매칭되어 :target 활성화 시 보임
+         - 내부에 “제목(title)”, “태그(tags)”, “댓글(comments)” UI 뼈대 포함
+         - 댓글 등록 폼(comment-form)은 나중에 JS가 처리할 수 있도록 형태만 준비
+       ─────────────────────────────────────────────────────────────────────────── -->
+    <div id="img1" class="lightbox">
+      <a href="#" class="close">&times;</a>
+
+      <!-- 사진 제목 (JavaScript로 채워질 예정) -->
+      <h2 class="photo-title">사진 제목</h2>
+
+      <!-- 태그 영역 (JavaScript로 태그 추가/삭제 기능 연결 예정) -->
+      <div class="photo-tags">
+        <span class="tag-item">#태그1</span>
+        <span class="tag-item">#태그2</span>
+        <!-- JS로 동적으로 <span class="tag-item">…</span> 추가 가능 -->
+      </div>
+
+      <!-- 이미지 본체 -->
+      <img src="css/cat.jpg" alt="사진1 크게보기" class="modal-image" />
+
+      <!-- 댓글 목록 (JavaScript로 댓글 로드/렌더링 예정) -->
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list">
+          <!-- JS로 <li class="comment-item">…</li> 형태로 댓글 추가 -->
+          <li class="comment-item">
+            <span class="comment-author">작성자</span>:
+            <span class="comment-text">댓글 내용 예시</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 댓글 입력 폼 (JavaScript로 제출 이벤트 처리 예정) -->
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img2" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags">
+        <span class="tag-item">#태그1</span>
+      </div>
+      <img src="css/cat2.jpg" alt="사진2 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img3" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/cat3.jpg" alt="사진3 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img4" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/help.jpg" alt="사진4 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img5" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/coding.jpg" alt="사진5 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img6" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/book.jpg" alt="사진6 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img7" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/t1worlds2024.jpg" alt="사진7 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <div id="img8" class="lightbox">
+      <a href="#" class="close">&times;</a>
+      <h2 class="photo-title">사진 제목</h2>
+      <div class="photo-tags"></div>
+      <img src="css/sun.jpg" alt="사진8 크게보기" class="modal-image" />
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <ul class="comment-list"></ul>
+      </div>
+      <form class="comment-form">
+        <input type="text" name="comment" placeholder="댓글을 입력하세요" required />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

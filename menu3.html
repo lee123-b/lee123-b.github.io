@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>영상 갤러리 페이지</title>
+  <!-- CSS 경로가 정확한지 꼭 확인하세요! -->
+  <link rel="stylesheet" href="css/video.css" />
+</head>
+<body>
+
+  <!-- ==============================
+       상단 고정 바
+  ============================== -->
+  <header>
+    <div class="top-bar">
+      <nav class="menu">
+        <a href="menu1.html">사진모음</a>
+        <a href="menu2.html">코딩</a>
+        <a href="menu3.html">공부</a>
+        <a href="menu4.html">나중에</a>
+      </nav>
+      <form class="search-box" action="search.html" method="GET">
+        <input type="text" name="query" placeholder="검색 (태그/제목)" required />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- ==============================
+       메인 콘텐츠
+  ============================== -->
+  <main>
+    <!-- ==============================
+         [1] 영상 갤러리 그리드
+         각 비디오를 .video-thumb 로 묶고,
+         마지막에 “＋ 버튼” 셀(.add-video) 포함
+       ============================== -->
+    <section class="video-gallery">
+      <!-- 영상 1 -->
+      <div class="video-thumb">
+        <div class="video-tags">
+          <span class="tag-item">#Unity강좌</span>
+          <span class="tag-item">#CSharp</span>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/3LGQpWLniFo"
+          title="영상1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- 영상 2 -->
+      <div class="video-thumb">
+        <div class="video-tags">
+          <span class="tag-item">#C언어</span>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/Ok0bBJPtgJI"
+          title="영상2"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- 영상 3 -->
+      <div class="video-thumb">
+        <div class="video-tags">
+          <span class="tag-item">#데이터전처리</span>
+          <span class="tag-item">#IMDB</span>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/OGFgdro160I"
+          title="영상3"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- 영상 4 -->
+      <div class="video-thumb">
+        <div class="video-tags">
+          <span class="tag-item">#React튜토리얼</span>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/tZooW6PritE"
+          title="영상4"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- “＋ 버튼” 셀: 클릭 시 #addVideo 모달 열림 -->
+      <div class="video-thumb add-video">
+        <a href="#addVideo" class="add-video-link">
+          <span class="add-video-button">＋</span>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ==============================
+         [2] “비디오 등록” 모달 (id="addVideo")
+         :target 활성화 시 보이도록 만듦
+       ============================== -->
+    <div id="addVideo" class="modal">
+      <a href="#" class="modal-close">&times;</a>
+      <div class="modal-content">
+        <h2>새 비디오 등록</h2>
+
+        <!-- 비디오 URL 입력 -->
+        <div class="modal-section">
+          <label for="video-url">유튜브 URL</label>
+          <input
+            type="text"
+            id="video-url"
+            placeholder="예) https://www.youtube.com/watch?v=XXXXXXX" />
+        </div>
+
+        <!-- 태그 입력 -->
+        <div class="modal-section">
+          <label for="video-tags-input">태그 (쉼표로 구분)</label>
+          <input
+            type="text"
+            id="video-tags-input"
+            placeholder="예) Unity, CSharp" />
+        </div>
+
+        <!-- 등록 버튼 (UI만) -->
+        <div class="modal-section">
+          <button type="button" class="modal-submit">등록</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
